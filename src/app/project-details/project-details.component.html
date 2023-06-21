@@ -1,0 +1,21 @@
+<div class="project-details">
+    <h1>{{ project?.title }}</h1>
+    <p>{{ project?.description }}</p>
+  
+    <div class="project-employees">
+      <h2>Available Employees</h2>
+      <div *ngFor="let employee of availableEmployees" class="employee-card">
+        <h3>{{ employee.name }}</h3>
+        <p>Role: {{ employee.role }}</p>
+      </div>
+    </div>
+  
+    <div class="project-needs">
+      <h2>Profiles Needed to Hire</h2>
+      <div *ngFor="let profile of neededProfiles" class="profile-card">
+        <p>Role: {{ profile.role }}</p>
+        <p>Number Needed: {{ profile.number }}</p>
+      </div>
+    </div>
+  </div>
+  

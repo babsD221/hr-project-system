@@ -1,0 +1,15 @@
+<div class="project-list">
+    <div *ngFor="let project of projects" class="project-card" (click)="displayDetails(project.id)">
+      <div class="project-details">
+        <h2 class="project-title">{{ project.title }}</h2>
+        <p class="project-description">{{ project.description }}</p>
+        <div class="employees-needed">
+          <h3>Employees needed:</h3>
+          <div *ngFor="let employee of project.employeesNeeded" class="employees-needed-item">
+            {{ employee.role }}: {{ employee.number }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
