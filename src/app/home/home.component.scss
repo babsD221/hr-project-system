@@ -1,0 +1,29 @@
+.home {
+    text-align: center;
+    padding: 20px;
+}
+
+.home__image {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.home__image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.home__content {
+    margin-top: 20px;
+}
+
+.home__content h2 {
+    margin-top: 20px;
+    color: #2c3e50;
+}
+
+.home__content p {
+    text-align: justify;
+    color: #2c3e50;
+}

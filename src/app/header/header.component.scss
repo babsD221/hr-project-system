@@ -1,26 +1,27 @@
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background-color: #f5f5f5;
-  }
-  
-  .logo {
-    font-size: 24px;
-  }
-  
-  .navigation {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .navigation a {
-    color: #333;
-    text-decoration: none;
-  }
-  
-  .navigation a.active {
-    font-weight: bold;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #2c3e50; /* Updated: dark blue color */
+}
+
+.logo {
+  font-size: 24px;
+  color: #ecf0f1; /* Updated: light grey color */
+}
+
+.navigation {
+  display: flex;
+  gap: 10px;
+}
+
+.navigation a {
+  color: #ecf0f1; /* Updated: light grey color */
+  text-decoration: none;
+}
+
+.navigation a.active {
+  font-weight: bold;
+  color: #f39c12; /* Updated: bright yellow color */
+}

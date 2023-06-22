@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {Employee, PROJECTS, Project  } from '../data'; // assuming the projects mock data is stored in a projects.ts file
 import { employees, EmployeeNeeded } from '../data'; // assuming the employees mock data is stored in a employees.ts file
 
@@ -11,9 +11,9 @@ import { employees, EmployeeNeeded } from '../data'; // assuming the employees m
 export class ProjectDetailsComponent implements OnInit {
   project: Project | undefined;
   availableEmployees: Employee[];
-  neededProfiles: EmployeeNeeded[];
+  neededProfiles: {role: string, number: number}[] = [];
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     // get project id from route params
@@ -29,29 +29,34 @@ export class ProjectDetailsComponent implements OnInit {
       console.log(this.availableEmployees);
 
     // calculate needed profiles
-    this.neededProfiles = this.calculateNeededProfiles();
+    this.calculateNeededProfiles();
   }
 
-  calculateNeededProfiles(): any {
+  calculateNeededProfiles(): void {
     const neededRoles = this.project?.employeesNeeded.reduce<Record<string, number>>((roles, neededEmployee) => {
       if (!roles[neededEmployee.role]) roles[neededEmployee.role] = 0;
       roles[neededEmployee.role] += neededEmployee.number;
       return roles;
     }, {});
-
+  
     const availableRoles = this.availableEmployees.reduce<Record<string, number>>((roles, employee) => {
       if (!roles[employee.role]) roles[employee.role] = 0;
       roles[employee.role]++;
       return roles;
     }, {});
-
-    const deficits: Record<string, number> = {};
+  
+    const deficits: {role: string, number: number}[] = [];
     for (const role in neededRoles) {
       const deficit = neededRoles[role] - (availableRoles[role] || 0);
-      if (deficit > 0) deficits[role] = deficit;
+      if (deficit > 0) deficits.push({role, number: deficit});
     }
+  
+    this.neededProfiles = deficits;
+  }
+  
 
-    return deficits;
+goBack(): void {
+  this.router.navigate(['/projects']); // navigate back to the projects list page
 }
 
 

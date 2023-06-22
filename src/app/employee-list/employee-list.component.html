@@ -1,18 +1,12 @@
-<h1>Employees</h1>
-
 <div class="employee-list">
-  
-    <div *ngFor="let employee of employees" class="employee-card">
-      <img [src]="'https://picsum.photos/200?random=' + employee.name" alt="Random image" />
-  
-      <h2>{{ employee.name }}</h2>
-      <p>Role: {{ employee.role }}</p>
-      <p>Possibility of leaving: {{ employee.possibilityOfLeaving ? 'Yes' : 'No' }}</p>
-      <p>Time to fill the post: {{ employee.timeToFillPost }} days</p>
-      <p>Experience: {{ employee.experience }} years</p>
-      <p>Efficiency: {{ employee.efficiency }}</p>
-      <p>Salary: {{ employee.salary | currency:'EUR' }}</p>
-      <p>Production: {{ employee.production }}</p>
-    </div>
+  <div *ngFor="let employee of employees" class="employee-card">
+      <h2 class="employee-name">{{ employee.name }}</h2>
+      <p><strong>Role:</strong> {{ employee.role }}</p>
+      <p><strong>Possibility of leaving:</strong> {{ employee.possibilityOfLeaving ? 'Yes' : 'No' }}</p>
+      <p><strong>Time to fill the post:</strong> {{ employee.timeToFillPost }} days</p>
+      <p><strong>Experience:</strong> {{ employee.experience }} years</p>
+      <p><strong>Efficiency:</strong> {{ employee.efficiency }}</p>
+      <p><strong>Salary:</strong> {{ employee.salary | currency:'EUR' }}</p>
+      <p><strong>Production:</strong> {{ employee.production }}</p>
   </div>
-  
+</div>
